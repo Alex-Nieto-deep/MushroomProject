@@ -1,0 +1,203 @@
+{% extends 'index.html' %}
+{% block body %}
+
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-md-12 pt-4 pb-4">
+      <h3 class="text-center text-success"><strong>Gráficas</strong></h3>
+    </div>
+    <div class="col-md-6">
+      <h4 class="text-center">num vs X</h4>
+      <div class="card">
+        <div class="card-body">
+          <canvas id="ejemplo1" width="500" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 class="text-center">num vs Y</h4>
+      <div class="card">
+        <div class="card-body">
+          <canvas id="ejemplo2" width="500" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 class="text-center">num vs Z</h4>
+      <div class="card">
+        <div class="card-body">
+          <canvas id="ejemplo3" width="500" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ejemplo -->
+<script>
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.legend.display = false;
+
+
+
+  const data = {
+    labels: [{% for dato in numeros %}
+  "{{ dato.0 }}",
+    {% endfor %}],
+  datasets: [{
+    label: 'My First dataset',
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    data: [{% for dato in numeros %}
+    {{ dato.2 }},
+  {% endfor %}],
+  }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  const ejemplo1 = new Chart(
+    document.getElementById('ejemplo1'),
+    config
+  );
+</script>
+
+
+<script>
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.legend.display = false;
+
+  var chartData = {
+    labels: [{% for dato in numeros %}
+  "{{ dato.0 }}",
+    {% endfor %}],
+  datasets: [{
+    label: 'x',
+    fill: true,
+    lineTension: 0.1,
+    backgroundColor: "rgba(114,147,203,0.2)",
+    borderColor: "red",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'mister',
+    pointBorderColor: "rgba(57,106,177,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(57,106,177,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [{% for dato in numeros %}
+    {{ dato.2 }},
+  {% endfor %}],
+    spanGaps: false
+        }]
+    }
+
+  var ctx = document.getElementById("ejemplo2").getContext("2d");
+
+  var ejemplo2 = new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+    options: {
+      responsive: true,
+      legend: {
+        labels: {
+          usePointStyle: false
+        }
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'num'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'x'
+          }
+        }]
+      },
+    }
+  });
+
+</script>
+
+<script>
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.legend.display = false;
+
+  var chartData = {
+    labels: [{% for dato in numeros %}
+  "{{ dato.0 }}",
+    {% endfor %}],
+  datasets: [{
+    label: 'x',
+    fill: true,
+    lineTension: 0.1,
+    backgroundColor: "rgba(114,147,203,0.2)",
+    borderColor: "green",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'mister',
+    pointBorderColor: "rgba(57,106,177,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(57,106,177,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [{% for dato in numeros %}
+    {{ dato.3 }},
+  {% endfor %}],
+    spanGaps: false
+        }]
+    }
+
+  var ctx = document.getElementById("ejemplo3").getContext("2d");
+
+  var ejemplo3 = new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+    options: {
+      responsive: true,
+      legend: {
+        labels: {
+          usePointStyle: false
+        }
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'num'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'x'
+          }
+        }]
+      },
+    }
+  });
+</script>
+
+{% endblock %}

@@ -27,5 +27,18 @@ def index():
     return render_template('index.html', numeros=numeros)
 
 
+@app.route('/graficas')
+def graficas():
+    cur = mysql.get_db().cursor()
+
+    cur.execute('SELECT * FROM numeros')
+    numeros = cur.fetchall()
+    cur.close()
+
+    print(numeros)
+
+    return render_template('graficas.html', numeros=numeros)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
