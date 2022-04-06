@@ -1,3 +1,6 @@
+html {
+  height: 100%;
+}
 header {
   background: rgba(0, 0, 0, 0.9);
   width: 100%;
@@ -5,8 +8,14 @@ header {
   z-index: 100;
 }
 
+.body {
+  background: rgba(0, 0, 0, 0.9);
+  text-decoration-color: white;
+}
+
 .contenido {
   padding-top: 80px;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .presentacion{
