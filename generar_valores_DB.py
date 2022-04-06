@@ -3,7 +3,7 @@ from decouple import config
 import mysql.connector
 
 
-SIZE = 500
+SIZE = 20
 
 
 def conectarDB():

@@ -49,7 +49,7 @@
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
     data: [{% for dato in numeros %}
-    {{ dato.2 }},
+    {{ dato.1 }},
   {% endfor %}],
   }]
   };
@@ -85,11 +85,11 @@
     borderDash: [],
     borderDashOffset: 0.0,
     borderJoinStyle: 'mister',
-    pointBorderColor: "rgba(57,106,177,1)",
+    pointBorderColor: "rgba(57,10,177,1)",
     pointBackgroundColor: "#fff",
     pointBorderWidth: 1,
     pointHoverRadius: 5,
-    pointHoverBackgroundColor: "rgba(57,106,177,1)",
+    pointHoverBackgroundColor: "rgba(57,10,177,1)",
     pointHoverBorderColor: "rgba(220,220,220,1)",
     pointHoverBorderWidth: 2,
     pointRadius: 1,
@@ -104,7 +104,7 @@
   var ctx = document.getElementById("ejemplo2").getContext("2d");
 
   var ejemplo2 = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: chartData,
     options: {
       responsive: true,
@@ -171,7 +171,7 @@
   var ctx = document.getElementById("ejemplo3").getContext("2d");
 
   var ejemplo3 = new Chart(ctx, {
-    type: 'line',
+    type: 'polarArea',
     data: chartData,
     options: {
       responsive: true,
